@@ -13,7 +13,7 @@ $ git clone https://github.com/RoiWu/AlphaCamp.git
 ```
 To RestaurantList Location 
 ```
-$ cd RestaurantList
+$ cd AlphaCamp/RestaurantList
 ```
 Install by [npm](https://www.npmjs.com/)
 ```
