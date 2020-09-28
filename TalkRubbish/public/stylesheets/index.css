@@ -1,0 +1,17 @@
+img {
+  max-width:100%;
+  width:100%;
+  height:auto;
+  overflow:hidden;
+}
+
+.title, .occupation{
+  display: flex;
+  justify-content: center;
+}
+
+.occupation_name {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
