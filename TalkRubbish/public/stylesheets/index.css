@@ -1,11 +1,15 @@
+/* {
+  border: 2px black solid;
+}*/
+
 img {
-  max-width:100%;
-  width:100%;
-  height:auto;
-  overflow:hidden;
+  width: auto;
+  height: 200px;
+  margin: auto;
+  display: block;
 }
 
-.title, .occupation{
+.title, .occupation, .rubbish_area, .rubbish_label, .rubbish_output{
   display: flex;
   justify-content: center;
 }
@@ -14,4 +18,8 @@ img {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.rubbish_label, .rubbish_output {
+  border: 2px black solid;
 }
