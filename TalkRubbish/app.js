@@ -3,6 +3,12 @@ const express = require('express')
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 
+// models 
+const generateRubbish = require('./models/generateRubbish')
+
+// database
+const occupations = require('./database/occupation.json')
+
 const app = express()
 const port = 3000
 
@@ -15,8 +21,23 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static('public'))
 
 app.get('/', (req, res) => {
+  const choseOccupation = ""
   const cssfile = "index"
-  res.render('index', { cssfile })
+  const occupation = occupations.info
+  res.render('index', { cssfile , occupation , choseOccupation})
+})
+
+app.post('/', (req, res) => {
+  if (req.body.length === 0) {
+    res.redirect('/')
+  } else {
+    const name    = occupations.info.find(job => job.occupation_en===req.body.occupation)
+    const rubbish = "身為一個"+name.occupation+"，"+generateRubbish(req.body)
+    const cssfile = "index"
+    const occupation = occupations.info
+    const choseOccupation = req.body.occupation
+    res.render('index', { cssfile , occupation , rubbish, choseOccupation})
+  }
 })
 
 app.listen(port, () => {

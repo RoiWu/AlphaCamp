@@ -1,31 +1,22 @@
 <h3 class="row title py-3">你想對誰說幹話</h3>
-<div class="row occupation">
-  <div class="col-3">
-    <label class="occupation_name">
-      <img src="https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5668/angry-developer.jpg" alt="工程師">
-      <div class="pt-2">
-        <input type="radio" name="occupation" value="Engineer"> 工程師
-      </div>
-    </label>
+<form method="POST" action="/">
+  <div class="row occupation">
+    {{#each occupation}}
+    <div class="col-3">
+      <label class="occupation_name">
+        <img src="{{this.image}}" alt="{{this.occupation_en}}">
+        <div class="pt-2">
+          <input type="radio" value="{{this.occupation_en}}" name="occupation" id="{{this.occupation_en}}" {{#if (choseOccupation===this.occupation_en) }} checked {{/if}}> {{this.occupation}}
+        </div>
+      </label>
+    </div>
+    {{/each}}
   </div>
-  <div class="col-3">
-    <label class="occupation_name">
-      <img src="https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5667/angry-designer.jpg" alt="設計師">
-      <div class="pt-2">
-        <input type="radio" name="occupation" value="Engineer"> 設計師
-      </div>
-    </label>
-  </div>
-  <div class="col-3">
-    <label class="occupation_name">
-      <img src="https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5669/angry-founder.jpg" alt="創業家">
-      <div class="pt-2">
-        <input type="radio" name="occupation" value="Engineer"> 創業家
-      </div>
-  </div>
-</div>
 
-<div class="row rubbish_area pt-5">
-  <button class="rubbish_label mx-2" style="height:30px">產生幹話</button>
-  <div class="col-7 rubbish_output" style="height:100px"></div>
-</div>
+  <div class="row rubbish_area pt-5">
+    <button class="btn btn-primary rubbish_label mx-2" type="submit" style="height:40px">產生幹話</button>
+    <div class="col-7 rubbish_output" style="height:100px">
+      {{#if choseOccupation}} <h4>{{rubbish}}</h4> {{/if}}
+    </div>
+  </div>
+</form>

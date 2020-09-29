@@ -1,0 +1,19 @@
+{
+    "info": [
+        {
+        "occupation" : "工程師",
+        "occupation_en": "engineer",
+        "image" : "https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5668/angry-developer.jpg"
+        },
+        {
+        "occupation" : "設計師",
+        "occupation_en": "designer",
+        "image" : "https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5667/angry-designer.jpg"
+        },
+        {
+        "occupation" : "創業家",
+        "occupation_en": "entrepreneur",
+        "image" : "https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5669/angry-founder.jpg"
+        }
+    ]
+}

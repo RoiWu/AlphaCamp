@@ -14,7 +14,7 @@ img {
   justify-content: center;
 }
 
-.occupation_name {
+.occupation_name, .rubbish_output {
   display: flex;
   flex-direction: column;
   align-items: center;
