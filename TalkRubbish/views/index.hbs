@@ -6,7 +6,8 @@
       <label class="occupation_name">
         <img src="{{this.image}}" alt="{{this.occupation_en}}">
         <div class="pt-2">
-          <input type="radio" value="{{this.occupation_en}}" name="occupation" id="{{this.occupation_en}}" {{#if (choseOccupation===this.occupation_en) }} checked {{/if}}> {{this.occupation}}
+          <input type="radio" value="{{this.occupation_en}}" name="occupation" id="{{this.occupation_en}}">
+          {{this.occupation}}
         </div>
       </label>
     </div>
