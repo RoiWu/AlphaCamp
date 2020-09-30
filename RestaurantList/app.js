@@ -4,9 +4,10 @@ const express = require('express')
 const app = express()
 const port = 3000
 const exphbs = require('express-handlebars')
-const restaurantList = require('./restaurant.json')
-const mongoose = require('mongoose') // 載入 mongoose
+//const restaurantList = require('./restaurant.json')
+const Restaurant = require('./models/restaurants') // 載入 todo model
 
+const mongoose = require('mongoose') // 載入 mongoose
 mongoose.connect('mongodb://localhost/restaurant-list', { useNewUrlParser: true, useUnifiedTopology: true }) // 設定連線到 mongoDB
 
 // 取得資料庫連線狀態
@@ -31,24 +32,40 @@ app.use(express.static('public'))
 // setting the route and corresponding response
 app.get('/', (req, res) => {
   const cssfile = "index"
-  res.render('index', { cssfile, restaurants: restaurantList.results })
+  Restaurant.find() // 取出 Todo model 裡的所有資料
+    .lean() // 把 Mongoose 的 Model 物件轉換成乾淨的 JavaScript 資料陣列
+    .then(restaurantList => res.render('index', { cssfile, restaurants: restaurantList })) // 將資料傳給 index 樣板
+    .catch(error => console.error(error)) // 錯誤處理
+  //res.render('index', { cssfile, restaurants: restaurantList.results })
 })
 
 app.get('/search', (req, res) => {
-    const cssfile = "index"
-    const keyword = req.query.keyword
-    const restaurants = restaurantList.results.filter(restaurant => {
-      return restaurant.name.toLowerCase().includes(keyword.toLowerCase())
-    })
-    res.render('index', { cssfile, restaurants, keyword})
-  })
+  const cssfile = "index"
+  const keyword = req.query.keyword
+
+  Restaurant.find() // 取出 Todo model 裡的所有資料
+    .lean() // 把 Mongoose 的 Model 物件轉換成乾淨的 JavaScript 資料陣列
+    .then(restaurantList => {
+      const restaurants = restaurantList.filter(restaurant => {
+        return restaurant.name.toLowerCase().includes(keyword.toLowerCase())
+      })
+      res.render('index', { cssfile, restaurants, keyword })
+    }) // 將資料傳給 index 樣板
+    .catch(error => console.error(error)) // 錯誤處理
+})
 
 app.get('/restaurants/:restaurant_id', (req, res) => {
-    const cssfile = "show"
-    const restaurant = restaurantList.results.find(
-        restaurant => restaurant.id == req.params.restaurant_id
+  const cssfile = "show"
+
+  Restaurant.find() // 取出 Todo model 裡的所有資料
+    .lean() // 把 Mongoose 的 Model 物件轉換成乾淨的 JavaScript 資料陣列
+    .then(restaurantList => {
+      const restaurant = restaurantList.find(
+        restaurant => restaurant.id === Number(req.params.restaurant_id)
       )
-    res.render('show', { cssfile, restaurant })
+      res.render('show', { cssfile, restaurant })
+    }) // 將資料傳給 index 樣板
+    .catch(error => console.error(error)) // 錯誤處理
 })
 
 // Listen the server when it started
