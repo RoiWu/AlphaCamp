@@ -5,7 +5,16 @@
       <a class="navbar-brand" href="/">
           <img src="https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/6227/restaurant-list-logo.png" width="30" height="30" class="d-inline-block align-top" alt="好。吃">
           我的餐廳清單
-        </a>
+      </a>
+      <div class="edit">
+        <a href="/restaurants/{{restaurant.id}}/edit"><i class="fas fa-pencil-alt ml-4 mr-1 fa-s"></i></a>
+        <form action="/restaurants/{{ restaurant.id }}?_method=DELETE" method="POST" style="display: inline;"
+          onsubmit="return deleteCheckAgain()">
+          <button type="submit" style="border: none; background: transparent;"
+            class="fas fa-times-circle fa-s">
+          </button>
+        </form>
+      </div>
     </div>
   </nav>
 
