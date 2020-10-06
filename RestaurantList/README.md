@@ -19,9 +19,13 @@ Install by [npm](https://www.npmjs.com/)
 ```
 $ npm install
 ```
-Execute 
+Execute seeder
 ```
-$ node app.js / nodemon app.js 
+$ npm run seed
+```
+Execute seeder
+```
+$ npm run dev 
 ```
 Terminal show the message 
 ```
