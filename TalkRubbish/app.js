@@ -10,7 +10,7 @@ const generateRubbish = require('./models/generateRubbish')
 const occupations = require('./database/occupation.json')
 
 const app = express()
-const hbs = exphbs.create({ defaultLayout: 'main', extname: '.hbs' });
+const hbs = exphbs.create({ defaultLayout: 'main', extname: '.hbs', helpers: require('./utils/hbsHelpers') });
 const port = 3000
 
 // setting template engine
@@ -23,10 +23,10 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static('public'))
 
 app.get('/', (req, res) => {
-  const choseOccupation = ""
+  const chosedoccupation = ""
   const cssfile = "index"
   const occupation = occupations.info
-  res.render('index', { cssfile, occupation, choseOccupation })
+  res.render('index', { cssfile, occupation, chosedoccupation })
 })
 
 app.post('/', (req, res) => {
@@ -37,8 +37,11 @@ app.post('/', (req, res) => {
     const rubbish = "身為一個" + name.occupation + "，" + generateRubbish(req.body)
     const cssfile = "index"
     const occupation = occupations.info
-    const choseOccupation = req.body.occupation
-    res.render('index', { cssfile, occupation, rubbish, choseOccupation })
+    const chosedoccupation = req.body.occupation.toString()
+    console.log("occupation=", occupation[0].occupation_en)
+    console.log("chosedoccupation=", chosedoccupation)
+    console.log("test=", chosedoccupation === occupation[0].occupation_en)
+    res.render('index', { cssfile, occupation, rubbish, chosedoccupation })
   }
 })
 

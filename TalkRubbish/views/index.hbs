@@ -6,7 +6,8 @@
       <label class="occupation_name">
         <img src="{{this.image}}" alt="{{this.occupation_en}}">
         <div class="pt-2">
-          <input type="radio" value="{{this.occupation_en}}" name="occupation" id="{{this.occupation_en}}">
+          <input type="radio" value="{{this.occupation_en}}" name="occupation" id="{{this.occupation_en}}"
+            {{#ifcond this.occupation_en "===" ../chosedoccupation}} checked {{/ifcond}}>
           {{this.occupation}}
         </div>
       </label>
@@ -17,7 +18,7 @@
   <div class="row rubbish_area pt-5">
     <button class="btn btn-primary rubbish_label mx-2" type="submit" style="height:40px">產生幹話</button>
     <div class="col-7 rubbish_output" style="height:100px">
-      {{#if choseOccupation}} <h4>{{rubbish}}</h4> {{/if}}
+      {{#if chosedoccupation}} <h4>{{rubbish}}</h4> {{/if}}
     </div>
   </div>
 </form>

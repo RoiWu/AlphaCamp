@@ -5,33 +5,21 @@ const mongoose = require('mongoose') // 載入 mongoose
 mongoose.connect('mongodb://localhost/restaurant-list', { useNewUrlParser: true, useUnifiedTopology: true }) // 設定連線到 mongoDB
 
 // 取得資料庫連線狀態
+const db = mongoose.connection
 
 // 連線異常
-
-async function createData(data) {
-  return new Promise((resolve, reject) => {
-    Restaurant.create(Object.assign(data.results, data))
-    resolve()
-  })
-  //Restaurant.create(Object.assign(data.results, data))
-}
-
-async function connect() {
-  const db = mongoose.connection
-  db.on('error', () => {
-    console.log('mongodb error!')
-  })
-  // 連線成功
-  db.once('open', () => {
-    console.log('mongodb connected!')
-    createData(restaurantList)
-      .then(console.log('done.'))
-//      .then(process.exit())
-  })
-} 
-
-connect()
-
+db.on('error', () => {
+  console.log('mongodb error!')
+})
+// 連線成功
+db.once('open', () => {
+  console.log('mongodb connected!')
+  Restaurant.create(Object.assign(restaurantList.results, restaurantList))
+    .then(() => {
+      console.log('done.')
+      db.close()
+    })
+})
 
 
 /*
