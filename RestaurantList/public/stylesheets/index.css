@@ -57,8 +57,10 @@ header {
 }
 
 .card img{
+  display: block;
   height: 180px;
 }
+
 
 .card-title{
   overflow:hidden;
