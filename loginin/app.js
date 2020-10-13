@@ -6,14 +6,14 @@ const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 const routes = require('./routes')
 
-//require('./config/mongoose')
+require('./config/mongoose')
 
 const app = express()
-const hbs = exphbs.create({ defaultLayout: 'main', extname: '.hbs'}) //, helpers: require('./utils/hbsHelpers') });
+const hbs = exphbs.create({ defaultLayout: 'main', extname: '.hbs' }) //, helpers: require('./utils/hbsHelpers') });
 const port = 3000
 
 // setting template engine
-app.engine('hbs',  hbs.engine)
+app.engine('hbs', hbs.engine)
 app.set('view engine', 'hbs')
 
 // setting static files
