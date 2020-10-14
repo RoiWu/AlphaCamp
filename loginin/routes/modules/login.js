@@ -11,6 +11,9 @@ router.post('/', (req, res) => {
     .lean()
     .then((info) => {
       if (info) {
+        const [ pre_email, address ] = email.split('@')
+        res.cookie('pre_email', pre_email)
+        res.cookie('address', address)
         res.redirect('/login/' + info.firstName)
       } else {
         res.redirect('/')
@@ -23,5 +26,6 @@ router.get('/:name', (req, res) => {
   const name = req.params.name
   res.render('welcome', { name })
 })
+
 
 module.exports = router
