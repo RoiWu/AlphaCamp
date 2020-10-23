@@ -18,8 +18,8 @@ router.post('/', (req, res) => {
       const shorten = createCode(array)
       Record.create({ url, shorten })
         .then(() => {
-          const webURL = `http://localhost:3000/${shorten}` 
-          res.render('shorten', {webURL})
+          const webURL = process.env.PORT ? `https://vast-springs-42681.herokuapp.com/${shorten}` : `http://localhost:3000/${shorten}`
+          res.render('shorten', { webURL })
         })
         .catch(error => console.log(error))
     })
@@ -28,7 +28,7 @@ router.post('/', (req, res) => {
 
 router.get('/:shorten', (req, res) => {
   const shorten = req.params.shorten
-  Record.find({shorten : shorten})
+  Record.find({ shorten: shorten })
     .lean()
     .then(info => {
       if (info.length === 1) {
@@ -36,7 +36,7 @@ router.get('/:shorten', (req, res) => {
       } else {
         res.redirect("/")
       }
-    }) 
+    })
     .catch(error => console.log(error))
 })
 
