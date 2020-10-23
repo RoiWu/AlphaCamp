@@ -18,7 +18,7 @@ router.post('/', (req, res) => {
       const shorten = createCode(array)
       Record.create({ url, shorten })
         .then(() => {
-          const webURL = process.env.PORT ? `https://vast-springs-42681.herokuapp.com/${shorten}` : `http://localhost:3000/${shorten}`
+          const webURL = process.env.PORT ? `https://desolate-depths-07685.herokuapp.com/${shorten}` : `http://localhost:3000/${shorten}`
           res.render('shorten', { webURL })
         })
         .catch(error => console.log(error))
