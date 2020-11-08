@@ -45,3 +45,5 @@ Roi Wu
 
 ## Reference
 https://github.com/ShihTingJustin/FeedYourSoul
+https://github.com/ALPHACamp/todo-list-express-oauth/blob/d577f044f78838c40ddea8b99260cfd2ea688945/.env.example
+
