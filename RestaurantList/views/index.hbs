@@ -38,7 +38,7 @@
           <option class="rating-desc selector" value="/sort/rating/desc">顧客評價 (高 ~ 低)</option>
           <option class="rating-asc selector" value="/sort/rating/asc">顧客評價 (低 ~ 高)</option>
           <option class='category-asc selector' value="/sort/category/asc">餐廳種類 (A ~ Z)</option>
-          <option class='category-desc selector' value="/sort/category/desc">餐廳種類 (Z ~ A)</option>    
+          <option class='category-desc selector' value="/sort/category/desc">餐廳種類 (Z ~ A)</option>
           <option class='location-asc selector' value="/sort/location/asc">餐廳地點 (A ~ Z)</option>
           <option class='location-desc selector' value="/sort/location/desc">餐廳地點 (Z ~ A)</option>
         </select>
@@ -54,7 +54,7 @@
       <div class="card-columns">
 
         {{#each restaurants}}
-        <a href="/restaurants/{{this.id}}" class="text-secondary">
+        <a href="/restaurants/{{this._id}}" class="text-secondary">
           <div class="card mb-3">
             <div class="card-photo">
               <img class="card-img-top" src="{{this.image}}" alt="{{this.name}}">
@@ -72,8 +72,8 @@
                   <i class="fas fa-star fa-xs ml-1"></i>
                 </span>
                 <div class="edit">
-                  <a href="/restaurants/{{this.id}}/edit"><i class="fas fa-pencil-alt ml-4 mr-1 fa-s"></i></a>
-                  <form action="/restaurants/{{ this.id }}?_method=DELETE" method="POST" style="display: inline;"
+                  <a href="/restaurants/{{this._id}}/edit"><i class="fas fa-pencil-alt ml-4 mr-1 fa-s"></i></a>
+                  <form action="/restaurants/{{ this._id }}?_method=DELETE" method="POST" style="display: inline;"
                     onsubmit="return deleteCheckAgain()">
                     <button type="submit" style="border: none; background: transparent;"
                       class="fas fa-times-circle fa-s">

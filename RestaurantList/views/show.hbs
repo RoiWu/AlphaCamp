@@ -3,15 +3,15 @@
   <nav class="navbar navbar-light bg-light">
     <div class="container">
       <a class="navbar-brand" href="/">
-          <img src="https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/6227/restaurant-list-logo.png" width="30" height="30" class="d-inline-block align-top" alt="好。吃">
-          我的餐廳清單
+        <img src="https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/6227/restaurant-list-logo.png"
+          width="30" height="30" class="d-inline-block align-top" alt="好。吃">
+        我的餐廳清單
       </a>
       <div class="edit">
-        <a href="/restaurants/{{restaurant.id}}/edit"><i class="fas fa-pencil-alt ml-4 mr-1 fa-s"></i></a>
-        <form action="/restaurants/{{ restaurant.id }}?_method=DELETE" method="POST" style="display: inline;"
+        <a href="/restaurants/{{restaurant._id}}/edit"><i class="fas fa-pencil-alt ml-4 mr-1 fa-s"></i></a>
+        <form action="/restaurants/{{ restaurant._id }}?_method=DELETE" method="POST" style="display: inline;"
           onsubmit="return deleteCheckAgain()">
-          <button type="submit" style="border: none; background: transparent;"
-            class="fas fa-times-circle fa-s">
+          <button type="submit" style="border: none; background: transparent;" class="fas fa-times-circle fa-s">
           </button>
         </form>
       </div>
@@ -57,7 +57,8 @@
         {{restaurant.description}}
       </p>
 
-      <img class="rounded mx-auto d-block mb-4 w-100" src="{{restaurant.image}}" alt="{{restaurant.name}}" style="max-width: 600px;">
+      <img class="rounded mx-auto d-block mb-4 w-100" src="{{restaurant.image}}" alt="{{restaurant.name}}"
+        style="max-width: 600px;">
     </div>
   </div>
 </div>
